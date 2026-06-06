@@ -58,33 +58,31 @@ El pool DHCP de R1 reparte el rango 10.3.75.130 - 10.3.75.254.
 > **Nota:** la máquina auxiliar Rocky Linux se conecta a la topología a través de un nodo Cloud1 (adaptador VMware VMnet1) enlazado a Gi1/0 del switch. Se utiliza como cliente legítimo para evidenciar el impacto del ataque: al agotarse el pool, no logra obtener dirección IP.
 
 # Capturas de pantalla.
-- Topología (nombre y matrícula)
+- Topología (Emmanuel Baez 20220375)
 
-![Topologia](
 
-<img width="457" height="360" alt="starv_topologia" src="https://github.com/user-attachments/assets/b99bb98f-0dba-4d42-900f-994f68968f3b" />)
+<img width="457" height="360" alt="starv_topologia" src="https://github.com/user-attachments/assets/b99bb98f-0dba-4d42-900f-994f68968f3b" />
 
 - Ejecución del ataque (DISCOVER con MACs falsas)
 
-![Ejecucion](
 
-<img width="572" height="217" alt="starv_ejecucion" src="https://github.com/user-attachments/assets/86ecbfc8-3584-47b0-8c74-123379097f78" />)
+
+<img width="572" height="217" alt="starv_ejecucion" src="https://github.com/user-attachments/assets/86ecbfc8-3584-47b0-8c74-123379097f78" />
 
 - Inundación de DISCOVER capturada en Wireshark
 
-![Avalancha DISCOVER](
 
 <img width="1218" height="360" alt="starv_wireshark" src="https://github.com/user-attachments/assets/77799780-59f6-4c60-8f8d-762e6fdae0a8" />)
 
 - Impacto: un cliente legítimo (Rocky) no puede obtener IP por pool agotado
 
-![Rocky sin IP - pool agotado](
 
-<img width="761" height="60" alt="starv_impacto_rocky" src="https://github.com/user-attachments/assets/34faf8cf-29d5-496a-9135-4ab0555dc57a" />)
 
-![R1 base de datos bloqueada](
+<img width="761" height="60" alt="starv_impacto_rocky" src="https://github.com/user-attachments/assets/34faf8cf-29d5-496a-9135-4ab0555dc57a" />
 
-<img width="527" height="167" alt="starv_r1_locked" src="https://github.com/user-attachments/assets/dc5e7c14-cefb-4df1-a719-5ab9873f3c8b" />)
+
+
+<img width="527" height="167" alt="starv_r1_locked" src="https://github.com/user-attachments/assets/dc5e7c14-cefb-4df1-a719-5ab9873f3c8b" />
 
 # Documentación de contra-medidas.
 La mitigación es Port Security, que limita cuántas direcciones MAC puede aprender el puerto del atacante. Como cada DISCOVER usa una MAC distinta, el switch detecta el exceso y bloquea el puerto. Se complementa con el rate-limit de DHCP Snooping.
