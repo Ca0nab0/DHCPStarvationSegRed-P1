@@ -72,7 +72,7 @@ El pool DHCP de R1 reparte el rango 10.3.75.130 - 10.3.75.254.
 - Inundación de DISCOVER capturada en Wireshark
 
 
-<img width="1218" height="360" alt="starv_wireshark" src="https://github.com/user-attachments/assets/77799780-59f6-4c60-8f8d-762e6fdae0a8" />)
+<img width="1218" height="360" alt="starv_wireshark" src="https://github.com/user-attachments/assets/77799780-59f6-4c60-8f8d-762e6fdae0a8" />
 
 - Impacto: un cliente legítimo (Rocky) no puede obtener IP por pool agotado
 
